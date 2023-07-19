@@ -13,6 +13,17 @@ module.exports = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
     },
+    colors: {
+      transparent: 'transparent',
+      current: 'currentColor',
+      white: 'hsla(0, 0%, 100%, 1)',
+      black: 'hsla(0, 0%, 0%, 1)',
+      primary: 'hsla(174, 38%, 95%, 1)',
+      secondary: 'hsla(196, 100%, 44%, 1)',
+      tertiary: 'hsla(231, 53%, 17%, 1)',
+      hoverLight: 'hsla(180, 27%, 86%, 1)',
+      hoverMedium: 'hsla(190, 55%, 80%, 1)',
+    },
   },
   plugins: [],
 };
