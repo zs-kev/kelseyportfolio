@@ -26,13 +26,14 @@ function Posts({ posts }: Props) {
     const { width, height } = extractImageDimensions(imageUrl);
 
     return (
-      <div key={post._id} className="w-full">
+      <div key={post._id} className="w-full mb-5">
         <Image
           src={imageUrl}
           alt={post.mainImage.alt}
           width={width}
           height={height}
           layout="responsive"
+          className="max-w-full rounded-2xl"
         />
       </div>
     );
@@ -40,7 +41,7 @@ function Posts({ posts }: Props) {
 
   // Return array of images with correct widths and heights
   return (
-    <div className="grid grid-cols-3 auto-rows-auto relative">
+    <div className="my-5 mx-auto md:columns-2 lg:columns-3 gap-x-5 break-inside-avoid w-[calc(100%-2.5rem)]">
       {postElements}
     </div>
   );
