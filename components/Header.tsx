@@ -23,7 +23,7 @@ function Header() {
           height={119}
         />
         <p className="pl-7 text-tertiary uppercase font-Amatic md:text-8xl sm:text-6xl text-5xl">
-          KibbledKels <br /> Creations
+          Kels Illustrates
         </p>
       </div>
       <div className="flex items-center md:flex-row flex-col">

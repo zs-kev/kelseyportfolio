@@ -9,7 +9,7 @@ function Logo() {
         width={36}
         height={35}
       />
-      <p className="pl-2.5 text-tertiary uppercase">KibbledKels Creations</p>
+      <p className="pl-2.5 text-tertiary uppercase">Kels Illustrates</p>
     </div>
   );
 }
