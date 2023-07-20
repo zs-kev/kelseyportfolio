@@ -32,7 +32,6 @@ function Posts({ posts }: Props) {
           alt={post.mainImage.alt}
           width={width}
           height={height}
-          layout="responsive"
           className="max-w-full rounded-2xl"
         />
       </div>
@@ -41,7 +40,7 @@ function Posts({ posts }: Props) {
 
   // Return array of images with correct widths and heights
   return (
-    <div className="my-5 mx-auto md:columns-2 lg:columns-3 gap-x-5 break-inside-avoid w-[calc(100%-2.5rem)]">
+    <div className="my-5 mx-auto md:columns-2 lg:columns-3 2xl:columns-4 gap-x-5 break-inside-avoid w-[calc(100%-8rem)]">
       {postElements}
     </div>
   );

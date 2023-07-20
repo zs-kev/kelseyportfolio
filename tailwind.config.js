@@ -12,6 +12,10 @@ module.exports = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      fontFamily: {
+        Amatic: ['Amatic SC', 'cursive'],
+        Josefin: ['Josefin Sans', 'sans-serif'],
+      },
     },
     colors: {
       transparent: 'transparent',

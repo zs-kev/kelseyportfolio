@@ -13,7 +13,7 @@ export default async function Page() {
   const posts = await client.fetch(query);
   return (
     <div>
-      <h1>Hello, Home page!</h1>
+      {/* <h1>Hello, Home page!</h1> */}
       <div>
         <Posts posts={posts} />
       </div>
