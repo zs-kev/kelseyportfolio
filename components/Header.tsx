@@ -14,7 +14,7 @@ const pagesArr: { page: string; path: string }[] = [
 function Header() {
   const currentRoute = usePathname();
   return (
-    <header className="flex items-center flex-col xl:flex-row xl:justify-between w-[calc(100%-8rem)] mx-auto py-24">
+    <header className="flex items-center flex-col xl:flex-row xl:justify-between w-[calc(100%-2rem)] md:w-[calc(100%-4rem)] lg:w-[calc(100%-8rem)] mx-auto md:py-24 py-10">
       <div className="flex items-center pb-10 xl:pb-0">
         <Image
           src="/assets/images/kelsey-drawing.png"
