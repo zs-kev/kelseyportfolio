@@ -32,7 +32,7 @@ function Posts({ posts }: Props) {
           alt={post.mainImage.alt}
           width={width}
           height={height}
-          className="max-w-full rounded-2xl"
+          className="max-w-full"
         />
       </div>
     );
