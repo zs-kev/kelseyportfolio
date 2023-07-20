@@ -27,7 +27,7 @@ const ShoppingCart: FC<ShoppingCartProps> = () => {
         font-weight="none"
         font-size="none"
         text-anchor="none"
-        style="mix-blend-mode: normal"
+        // style="mix-blend-mode: normal"
       >
         <path d="M0,172v-172h172v172z" fill="none"></path>
         <g fill="#A8A9BA">
