@@ -40,7 +40,7 @@ function Posts({ posts }: Props) {
 
   // Return array of images with correct widths and heights
   return (
-    <div className="my-5 mx-auto md:columns-2 lg:columns-3 2xl:columns-4 gap-x-5 break-inside-avoid w-[calc(100%-2rem)] md:w-[calc(100%-4rem)] lg:w-[calc(100%-8rem)]">
+    <div className="my-5 mx-auto md:columns-2 lg:columns-3 2xl:columns-4 gap-x-5 break-inside-avoid xl:px-8 px-4">
       {postElements}
     </div>
   );

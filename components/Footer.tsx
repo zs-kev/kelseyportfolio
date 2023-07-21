@@ -13,8 +13,8 @@ const pagesArr: { page: string; path: string }[] = [
 function Footer() {
   const currentRoute = usePathname();
   return (
-    <footer className="flex items-center justify-center w-[calc(100%-2rem)] md:w-[calc(100%-4rem)] lg:w-[calc(100%-8rem)] mx-auto md:py-24 py-10">
-      <div className="flex items-center flex-col">
+    <footer className="py-10 border-t border-backgroundLines">
+      <div className="flex items-center flex-col xl:px-8 px-4">
         <div className="font-Josefin font-light md:text-2xl sm:text-xl flex justify-between gap-9">
           {pagesArr.map(({ page, path }) => (
             <Link
@@ -37,7 +37,9 @@ function Footer() {
           <Instagram />
           Follow For More
         </a>
-        <p className="font-Josefin pt-10 text-xs">&copy; 2023 Kelsey Simon</p>
+        <p className="font-Josefin pt-10 text-xs font-light">
+          &copy; 2023 Kelsey Simon
+        </p>
       </div>
     </footer>
   );

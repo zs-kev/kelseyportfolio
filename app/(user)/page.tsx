@@ -12,11 +12,11 @@ const query = groq`
 export default async function Page() {
   const posts = await client.fetch(query);
   return (
-    <div>
+    <section className="py-28 max-w-screen-2xl mx-auto">
       {/* <h1>Hello, Home page!</h1> */}
       <div>
         <Posts posts={posts} />
       </div>
-    </div>
+    </section>
   );
 }

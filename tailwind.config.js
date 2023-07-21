@@ -27,6 +27,7 @@ module.exports = {
       tertiary: 'hsla(231, 53%, 17%, 1)',
       hoverLight: 'hsla(180, 27%, 86%, 1)',
       hoverMedium: 'hsla(190, 55%, 80%, 1)',
+      backgroundLines: 'hsla(231, 53%, 17%, 0.1)',
     },
   },
   plugins: [],
