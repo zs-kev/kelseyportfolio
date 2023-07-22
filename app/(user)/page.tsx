@@ -9,6 +9,8 @@ const query = groq`
 } | order(_createdAt desc)
 `;
 
+export const revalidate = 60; //Revalidate the page every 60s
+
 export default async function Page() {
   const posts = await client.fetch(query);
   return (
