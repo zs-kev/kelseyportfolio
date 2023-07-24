@@ -5,12 +5,10 @@ import BackgroundLines from '../../../components/BackgroundLines';
 export default function Page() {
   return (
     <>
-      <section className="relative max-w-screen-2xl mx-auto text-center">
-        <div className="xl:px-8 px-14">
-          <h1 className="font-Josefin text-6xl max-w-md mx-auto pt-28 pb-14 font-semibold">
-            A look behind the drawings.
-          </h1>
-          <div className="relative grid md:grid-cols-3 sm:grid-cols-2 gap-[5%] justify-center z-10 max-w-5xl mx-auto py-20">
+      <section className="text-center">
+        <div className="wrapper">
+          <h1>A look behind the drawings.</h1>
+          <div className="relative grid md:grid-cols-3 sm:grid-cols-2 gap-[5%] justify-center z-10 max-w-5xl mx-auto lg:py-20 py-0">
             <div className="pt-16 hidden sm:block">
               <div className="p-4 bg-white border border-tertiary rounded-2xl max-w-[295px]">
                 <div className="border border-tertiary rounded-lg overflow-hidden">
@@ -52,18 +50,18 @@ export default function Page() {
         </div>
         <BackgroundLines numberOfLines={11} />
       </section>
-      <section className="relative max-w-screen-2xl mx-auto pt-20 pb-28">
-        <div className="max-w-5xl mx-auto xl:px-8 px-14">
-          <h2 className="font-Josefin text-5xl font-semibold pb-10">
+      <section>
+        <div className="max-w-5xl mx-auto wrapper">
+          <h2 className="font-Josefin sm:text-4xl md:text-5xl text-3xl font-semibold md:pb-10 pb-6 ">
             About Me
           </h2>
-          <p className="text-xl">
+          <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
             sagittis condimentum placerat. Ut ligula dolor, dignissim in
             vehicula nec, fringilla quis nisi. Phasellus viverra odio arcu,
             vitae finibus felis elementum.
           </p>
-          <p className="text-xl py-6">
+          <p className="md:py-6 py-5">
             Duis tristique sem non dui facilisis, ut commodo enim porttitor.
             Fusce pellentesque sem nec ligula malesuada dictum. Integer vehicula
             bibendum maximus. In blandit, augue ut gravida interdum, ipsum lacus
@@ -72,7 +70,7 @@ export default function Page() {
             Quisque non accumsan urna, eget gravida eros. Vestibulum vitae
             convallis diam.
           </p>
-          <p className="text-xl">
+          <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
             sagittis condimentum placerat. Ut ligula dolor, dignissim in
             vehicula nec, fringilla quis nisi. Phasellus viverra odio arcu,

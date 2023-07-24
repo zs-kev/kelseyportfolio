@@ -2,5 +2,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap');
 
 @tailwind base;
+
+@layer base {
+  h1 {
+    @apply font-Josefin sm:text-5xl md:text-6xl text-4xl max-w-md mx-auto pb-14 font-semibold md:pt-12 sm:pt-4;
+  }
+  p {
+    @apply md:text-xl text-base;
+  }
+  section {
+    @apply relative max-w-screen-2xl mx-auto py-16;
+  }
+  .wrapper {
+    @apply xl:px-8 md:px-14 px-10;
+  }
+}
+
 @tailwind components;
 @tailwind utilities;

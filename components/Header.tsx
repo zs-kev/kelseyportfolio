@@ -15,7 +15,7 @@ function Header() {
   const currentRoute = usePathname();
   return (
     <header className=" py-10 border-b border-backgroundLines">
-      <div className="max-w-screen-2xl mx-auto xl:px-8 px-4 flex items-center flex-col xl:flex-row xl:justify-between">
+      <div className="wrapper max-w-screen-2xl mx-auto flex items-center flex-col xl:flex-row xl:justify-between">
         <div className="flex items-center pb-10 xl:pb-0">
           <Image
             src="/assets/images/kelsey-drawing.png"
@@ -28,7 +28,7 @@ function Header() {
           </p>
         </div>
         <div className="flex items-center md:flex-row flex-col">
-          <nav className="font-Josefin font-light text-xl flex justify-between gap-5 ">
+          <nav className="font-Josefin font-light md:text-xl text-base flex justify-between md:gap-5 sm:gap-3 gap-1.5 ">
             {pagesArr.map(({ page, path }) => (
               <Link
                 href={path}
