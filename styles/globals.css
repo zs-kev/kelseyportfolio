@@ -5,7 +5,7 @@
 
 @layer base {
   h1 {
-    @apply font-Josefin sm:text-5xl md:text-6xl text-4xl max-w-md mx-auto pb-14 font-semibold md:pt-12 sm:pt-4;
+    @apply font-Josefin sm:text-5xl md:text-6xl text-4xl font-semibold md:pt-12 sm:pt-4;
   }
   p {
     @apply md:text-xl text-base;
@@ -15,6 +15,9 @@
   }
   .wrapper {
     @apply xl:px-8 md:px-14 px-10;
+  }
+  .visuallyHidden {
+    @apply inline-block absolute overflow-hidden h-px w-px p-0 border-0;
   }
 }
 

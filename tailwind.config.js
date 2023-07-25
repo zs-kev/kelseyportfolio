@@ -16,6 +16,9 @@ module.exports = {
         Amatic: ['Amatic SC', 'cursive'],
         Josefin: ['Josefin Sans', 'sans-serif'],
       },
+      boxShadow: {
+        formShadow: '0 4px 0 0',
+      },
     },
     colors: {
       transparent: 'transparent',

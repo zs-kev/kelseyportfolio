@@ -7,7 +7,9 @@ export default function Page() {
     <>
       <section className="text-center">
         <div className="wrapper">
-          <h1>A look behind the drawings.</h1>
+          <h1 className="max-w-md mx-auto pb-14">
+            A look behind the drawings.
+          </h1>
           <div className="relative grid md:grid-cols-3 sm:grid-cols-2 gap-[5%] justify-center z-10 max-w-5xl mx-auto lg:py-20 py-0">
             <div className="pt-16 hidden sm:block">
               <div className="p-4 bg-white border border-tertiary rounded-2xl max-w-[295px]">
@@ -45,7 +47,9 @@ export default function Page() {
                 </div>
               </div>
             </div>
-            <BackgroundCircle />
+            <div className="absolute left-2/4 -translate-x-2/4 z-[-1] top-0 lg:w-[850px] lg:h-[850px] md:w-[650px] md:h-[650px] sm:w-[450px] sm:h-[450px] w-[300px] h-[300px]">
+              <BackgroundCircle />
+            </div>
           </div>
         </div>
         <BackgroundLines numberOfLines={11} />
