@@ -6,7 +6,7 @@ interface FormInputWrapperProps {
 
 const FormInputWrapper: FC<FormInputWrapperProps> = ({ children }) => {
   return (
-    <div className="bg-white flex items-start mb-4 py-1.5 px-3 gap-2.5 border border-tertiary border-solid rounded-md shadow-formShadow shadow-tertiary">
+    <div className="bg-white flex items-start mb-4 py-1.5 px-3 gap-2.5 border border-tertiary border-solid rounded-md shadow-formShadow focus-within:shadow-formShadowHover ease-buttonHover duration-500 shadow-tertiary">
       {children}
     </div>
   );

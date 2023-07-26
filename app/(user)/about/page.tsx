@@ -47,7 +47,7 @@ export default function Page() {
                 </div>
               </div>
             </div>
-            <div className="absolute left-2/4 -translate-x-2/4 z-[-1] top-0 lg:w-[850px] lg:h-[850px] md:w-[650px] md:h-[650px] sm:w-[450px] sm:h-[450px] w-[300px] h-[300px]">
+            <div className="absolute left-2/4 -translate-x-2/4 z-[-1] top-0 lg:w-[850px] lg:h-[850px] md:w-[650px] md:h-[650px] sm:w-[600px] sm:h-[600px] w-[350px] h-[350px]">
               <BackgroundCircle />
             </div>
           </div>

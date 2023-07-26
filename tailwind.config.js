@@ -18,6 +18,10 @@ module.exports = {
       },
       boxShadow: {
         formShadow: '0 4px 0 0',
+        formShadowHover: '0 2px 0 0',
+      },
+      transitionTimingFunction: {
+        buttonHover: 'cubic-bezier(0.6, 0.6, 0, 1)',
       },
     },
     colors: {
