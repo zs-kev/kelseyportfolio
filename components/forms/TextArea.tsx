@@ -5,10 +5,8 @@ export interface TextareaProps {
   placeholder: string;
   name: string;
   value: string | number;
-  error: boolean;
   disabled?: boolean;
-  id: string;
-  autoFocus: boolean;
+  autoFocus?: boolean;
   rows: number;
   cols: number;
   // eslint-disable-next-line no-unused-vars
@@ -20,9 +18,7 @@ const Textarea: React.FC<TextareaProps> = ({
   placeholder,
   name,
   value,
-  error,
   disabled,
-  id,
   autoFocus,
   rows,
   cols,
@@ -35,7 +31,7 @@ const Textarea: React.FC<TextareaProps> = ({
       name={name}
       value={value}
       disabled={disabled}
-      id={id}
+      id={name}
       autoFocus={autoFocus}
       rows={rows}
       cols={cols}

@@ -6,9 +6,7 @@ export interface InputProps {
   placeholder: string;
   name: string;
   value: string | number;
-  error: boolean;
-  id: string;
-  autoFocus: boolean;
+  autoFocus?: boolean;
   pattern?: string;
   disabled?: boolean;
   // eslint-disable-next-line no-unused-vars
@@ -21,8 +19,6 @@ const Input: React.FC<InputProps> = ({
   placeholder,
   name,
   value,
-  error,
-  id,
   autoFocus,
   pattern,
   disabled,
@@ -35,7 +31,7 @@ const Input: React.FC<InputProps> = ({
       placeholder={placeholder}
       name={name}
       value={value}
-      id={id}
+      id={name}
       autoFocus={autoFocus}
       pattern={pattern}
       disabled={disabled}

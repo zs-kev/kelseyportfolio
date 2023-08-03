@@ -1,3 +1,4 @@
+/* eslint-disable no-control-regex */
 'use client';
 
 import {
@@ -9,14 +10,68 @@ import { useState } from 'react';
 import BackgroundCircle from '../../../components/BackgroundCircle';
 import BackgroundLines from '../../../components/BackgroundLines';
 import Button from '../../../components/Button';
-import FormInputWrapper from '../../../components/forms/FormInputWrapper';
+import ErrorText from '../../../components/forms/ErrorText';
+import FormControl from '../../../components/forms/FormControl';
 import Input from '../../../components/forms/Input';
+import Label from '../../../components/forms/Label';
 import Textarea from '../../../components/forms/TextArea';
 
+const initValues = { name: '', email: '', message: '' };
+const initState = { values: initValues };
+
 export default function Page() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
+  const [formValues, setFormValues] = useState(initState);
+  const [formErrors, setFormErrors] = useState({
+    name: { message: '', errorState: false },
+    email: { message: '', errorState: false },
+    message: { message: '', errorState: false },
+  });
+  const [isLoading, setIsLoading] = useState(false);
+
+  const { values } = formValues;
+
+  const handleChange = ({
+    target,
+  }:
+    | React.ChangeEvent<HTMLInputElement>
+    | React.ChangeEvent<HTMLTextAreaElement>) =>
+    setFormValues((prev) => ({
+      ...prev,
+      values: {
+        ...prev.values,
+        [target.name]: target.value,
+      },
+    }));
+
+  const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setFormErrors(validate(formValues));
+  };
+
+  // Final check for any errors when submitting form
+  const validate = ({ values }: any) => {
+    const errors = {
+      name: { message: '', errorState: false },
+      email: { message: '', errorState: false },
+      message: { message: '', errorState: false },
+    };
+
+    if (!values.name) {
+      errors.name.message = 'Name is required';
+      errors.name.errorState = true;
+    }
+    if (!values.email) {
+      errors.email.message = 'Email is required';
+      errors.email.errorState = true;
+    }
+    if (!values.message) {
+      errors.message.message = 'Message is required';
+      errors.message.errorState = true;
+    }
+
+    return errors;
+  };
 
   return (
     <section>
@@ -30,61 +85,77 @@ export default function Page() {
           <h2 className="font-Josefin text-2xl pt-16 pb-5">
             Send Me a Message
           </h2>
-          <form className="pb-16">
-            <FormInputWrapper>
-              <label className="inline-block h-6 w-6 mt-2">
+          <form className="pb-16" onSubmit={handleSubmit}>
+            <FormControl error={formErrors.name.errorState}>
+              <Label>
                 <p className="visuallyHidden">Your Name</p>
                 <UserIcon />
-              </label>
+              </Label>
               <Input
                 type="text"
                 required
-                placeholder="Enter your name"
+                placeholder="Enter your name*"
                 name="name"
-                value={name}
-                error={false}
-                id="name"
+                value={values.name}
+                pattern="^[a-zA-Z]+(?:\s+[a-zA-Z]+)*$"
                 autoFocus
-                onChange={(e) => setName(e.target.value)}
+                onChange={handleChange}
               />
-            </FormInputWrapper>
-            <FormInputWrapper>
-              <label className="inline-block h-6 w-6 mt-2">
+            </FormControl>
+            {formErrors.name.errorState && (
+              <div className="mb-4 -mt-3">
+                <ErrorText message={formErrors.name.message} />
+              </div>
+            )}
+            <FormControl error={formErrors.email.errorState}>
+              <Label>
                 <p className="visuallyHidden">Email Address</p>
                 <AtSymbolIcon />
-              </label>
+              </Label>
               <Input
                 type="email"
                 required
-                placeholder="Enter your email"
+                placeholder="Enter your email*"
                 name="email"
-                value={email}
-                error={false}
-                id="email"
-                autoFocus={false}
-                onChange={(e) => setEmail(e.target.value)}
+                value={values.email}
+                onChange={handleChange}
               />
-            </FormInputWrapper>
-            <FormInputWrapper>
-              <label className="inline-block h-6 w-6 mt-2">
+            </FormControl>
+            {formErrors.email.errorState && (
+              <div className="mb-4 -mt-3">
+                <ErrorText message={formErrors.email.message} />
+              </div>
+            )}
+            <FormControl error={formErrors.message.errorState}>
+              <Label>
                 <p className="visuallyHidden">Your Message</p>
                 <ChatBubbleBottomCenterTextIcon />
-              </label>
+              </Label>
               <Textarea
                 required
-                placeholder="Enter your message"
+                placeholder="Enter your message*"
                 name="message"
-                value={message}
-                error={false}
-                id="message"
-                autoFocus={false}
+                value={values.message}
                 rows={5}
                 cols={1}
-                onChange={(e) => setMessage(e.target.value)}
+                onChange={handleChange}
               />
-            </FormInputWrapper>
+            </FormControl>
+            {formErrors.message.errorState && (
+              <div className="mb-4 -mt-3">
+                <ErrorText message={formErrors.message.message} />
+              </div>
+            )}
             <div className="pt-4">
-              <Button>Send Message</Button>
+              <Button
+                type="submit"
+                loading={isLoading}
+                disabled={
+                  !values.name || !values.email || !values.message || isLoading
+                }
+              >
+                Send Message
+              </Button>
             </div>
           </form>
           <div className="absolute left-2/4 -translate-x-2/4 z-[-1] top-0 lg:w-[600px] lg:h-[600px]  sm:w-[600px] sm:h-[600px] w-[350px] h-[350px]">
