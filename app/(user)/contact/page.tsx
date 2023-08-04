@@ -10,6 +10,7 @@ import { useState } from 'react';
 import BackgroundCircle from '../../../components/BackgroundCircle';
 import BackgroundLines from '../../../components/BackgroundLines';
 import Button from '../../../components/Button';
+import ContactSubmit from '../../../components/contact/ContactSubmit';
 import ErrorText from '../../../components/forms/ErrorText';
 import FormControl from '../../../components/forms/FormControl';
 import Input from '../../../components/forms/Input';
@@ -27,6 +28,9 @@ export default function Page() {
     message: { message: '', errorState: false },
   });
   const [isLoading, setIsLoading] = useState(false);
+  const [contactSubmit, setcontactSubmit] = useState(
+    'standby' // standby - unsent / success - message sent successfully / error - message not sent
+  );
 
   const { values } = formValues;
 
@@ -43,10 +47,30 @@ export default function Page() {
       },
     }));
 
-  const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
-    setFormErrors(validate(formValues));
+    const values = formValues.values;
+    if (!values.name || !values.email || !values.message) {
+      setFormErrors(validate(formValues));
+      setIsLoading(false);
+      return;
+    }
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'post',
+        body: JSON.stringify(values),
+      });
+      const serverResponse = await response.text();
+      if (serverResponse === 'success') {
+        setIsLoading(false);
+        setcontactSubmit('success');
+      }
+    } catch (error) {
+      setIsLoading(false);
+      setcontactSubmit('error');
+    }
   };
 
   // Final check for any errors when submitting form
@@ -73,6 +97,11 @@ export default function Page() {
     return errors;
   };
 
+  // If the error state is shown, clicking try again button will show the contact form again
+  const handleTryAgain = () => {
+    setcontactSubmit('standby');
+  };
+
   return (
     <section>
       <div className="wrapper text-center">
@@ -82,82 +111,108 @@ export default function Page() {
           below
         </p>
         <div className="relative max-w-md mx-auto">
-          <h2 className="font-Josefin text-2xl pt-16 pb-5">
-            Send Me a Message
-          </h2>
-          <form className="pb-16" onSubmit={handleSubmit}>
-            <FormControl error={formErrors.name.errorState}>
-              <Label>
-                <p className="visuallyHidden">Your Name</p>
-                <UserIcon />
-              </Label>
-              <Input
-                type="text"
-                required
-                placeholder="Enter your name*"
-                name="name"
-                value={values.name}
-                pattern="^[a-zA-Z]+(?:\s+[a-zA-Z]+)*$"
-                autoFocus
-                onChange={handleChange}
-              />
-            </FormControl>
-            {formErrors.name.errorState && (
-              <div className="mb-4 -mt-3">
-                <ErrorText message={formErrors.name.message} />
-              </div>
-            )}
-            <FormControl error={formErrors.email.errorState}>
-              <Label>
-                <p className="visuallyHidden">Email Address</p>
-                <AtSymbolIcon />
-              </Label>
-              <Input
-                type="email"
-                required
-                placeholder="Enter your email*"
-                name="email"
-                value={values.email}
-                onChange={handleChange}
-              />
-            </FormControl>
-            {formErrors.email.errorState && (
-              <div className="mb-4 -mt-3">
-                <ErrorText message={formErrors.email.message} />
-              </div>
-            )}
-            <FormControl error={formErrors.message.errorState}>
-              <Label>
-                <p className="visuallyHidden">Your Message</p>
-                <ChatBubbleBottomCenterTextIcon />
-              </Label>
-              <Textarea
-                required
-                placeholder="Enter your message*"
-                name="message"
-                value={values.message}
-                rows={5}
-                cols={1}
-                onChange={handleChange}
-              />
-            </FormControl>
-            {formErrors.message.errorState && (
-              <div className="mb-4 -mt-3">
-                <ErrorText message={formErrors.message.message} />
-              </div>
-            )}
-            <div className="pt-4">
-              <Button
-                type="submit"
-                loading={isLoading}
-                disabled={
-                  !values.name || !values.email || !values.message || isLoading
-                }
-              >
-                Send Message
+          {contactSubmit === 'standby' && (
+            <>
+              <h2 className="font-Josefin text-2xl pt-16 pb-5">
+                Send Me a Message
+              </h2>
+              <form className="pb-16" onSubmit={handleSubmit}>
+                <FormControl error={formErrors.name.errorState}>
+                  <Label>
+                    <p className="visuallyHidden">Your Name</p>
+                    <UserIcon />
+                  </Label>
+                  <Input
+                    type="text"
+                    required
+                    placeholder="Enter your name*"
+                    name="name"
+                    value={values.name}
+                    pattern="^[a-zA-Z]+(?:\s+[a-zA-Z]+)*$"
+                    autoFocus
+                    onChange={handleChange}
+                  />
+                </FormControl>
+                {formErrors.name.errorState && (
+                  <div className="mb-4 -mt-3">
+                    <ErrorText message={formErrors.name.message} />
+                  </div>
+                )}
+                <FormControl error={formErrors.email.errorState}>
+                  <Label>
+                    <p className="visuallyHidden">Email Address</p>
+                    <AtSymbolIcon />
+                  </Label>
+                  <Input
+                    type="email"
+                    required
+                    placeholder="Enter your email*"
+                    name="email"
+                    value={values.email}
+                    onChange={handleChange}
+                  />
+                </FormControl>
+                {formErrors.email.errorState && (
+                  <div className="mb-4 -mt-3">
+                    <ErrorText message={formErrors.email.message} />
+                  </div>
+                )}
+                <FormControl error={formErrors.message.errorState}>
+                  <Label>
+                    <p className="visuallyHidden">Your Message</p>
+                    <ChatBubbleBottomCenterTextIcon />
+                  </Label>
+                  <Textarea
+                    required
+                    placeholder="Enter your message*"
+                    name="message"
+                    value={values.message}
+                    rows={5}
+                    cols={1}
+                    onChange={handleChange}
+                  />
+                </FormControl>
+                {formErrors.message.errorState && (
+                  <div className="mb-4 -mt-3">
+                    <ErrorText message={formErrors.message.message} />
+                  </div>
+                )}
+                <div className="pt-4">
+                  <Button
+                    type="submit"
+                    loading={isLoading}
+                    disabled={
+                      !values.name ||
+                      !values.email ||
+                      !values.message ||
+                      isLoading
+                    }
+                  >
+                    Send Message
+                  </Button>
+                </div>
+              </form>
+            </>
+          )}
+          {contactSubmit === 'success' && (
+            <>
+              <h2 className="font-Josefin text-2xl pt-16 pb-5">
+                Thank You for the Message
+              </h2>
+              <ContactSubmit state={'success'} />
+            </>
+          )}
+          {contactSubmit === 'error' && (
+            <>
+              <h2 className="font-Josefin text-2xl pt-16 pb-5">
+                Whoops! There Was an Error
+              </h2>
+              <ContactSubmit state={'error'} />
+              <Button type="button" onClick={handleTryAgain}>
+                Try Again
               </Button>
-            </div>
-          </form>
+            </>
+          )}
           <div className="absolute left-2/4 -translate-x-2/4 z-[-1] top-0 lg:w-[600px] lg:h-[600px]  sm:w-[600px] sm:h-[600px] w-[350px] h-[350px]">
             <BackgroundCircle />
           </div>

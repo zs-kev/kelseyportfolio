@@ -5,13 +5,21 @@ interface ButtonProps {
   type: 'submit' | 'reset' | 'button';
   disabled?: boolean;
   loading?: boolean;
+  onClick?: (e: React.MouseEvent<HTMLElement>) => void;
 }
 
-const Button: FC<ButtonProps> = ({ children, type, disabled, loading }) => {
+const Button: FC<ButtonProps> = ({
+  children,
+  type,
+  disabled,
+  loading,
+  onClick,
+}) => {
   return (
     <button
       type={type}
       disabled={disabled}
+      onClick={onClick}
       className="py-3 px-9 w-full font-Josefin font-bold border border-solid border-tertiary rounded bg-hoverMedium hover:bg-hoverLight ease-buttonHover duration-500 shadow-formShadow hover:shadow-formShadowHover shadow-tertiary disabled:opacity-80 disabled:bg-hoverLight disabled:hover:shadow-formShadow"
     >
       {loading ? (
