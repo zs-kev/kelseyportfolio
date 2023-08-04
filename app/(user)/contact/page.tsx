@@ -28,7 +28,7 @@ export default function Page() {
     message: { message: '', errorState: false },
   });
   const [isLoading, setIsLoading] = useState(false);
-  const [contactSubmit, setcontactSubmit] = useState(
+  const [contactSubmit, setContactSubmit] = useState(
     'standby' // standby - unsent / success - message sent successfully / error - message not sent
   );
 
@@ -65,11 +65,14 @@ export default function Page() {
       const serverResponse = await response.text();
       if (serverResponse === 'success') {
         setIsLoading(false);
-        setcontactSubmit('success');
+        setContactSubmit('success');
+      } else if (serverResponse === 'error') {
+        setIsLoading(false);
+        setContactSubmit('error');
       }
     } catch (error) {
       setIsLoading(false);
-      setcontactSubmit('error');
+      setContactSubmit('error');
     }
   };
 
@@ -99,7 +102,7 @@ export default function Page() {
 
   // If the error state is shown, clicking try again button will show the contact form again
   const handleTryAgain = () => {
-    setcontactSubmit('standby');
+    setContactSubmit('standby');
   };
 
   return (
