@@ -69,6 +69,7 @@ function Header() {
             alt="Kibbled Kels Creations"
             width={124}
             height={120}
+            priority={true}
           />
           <p className="pl-5 text-tertiary uppercase font-Amatic text-5xl">
             Kels Illustrates
@@ -115,6 +116,7 @@ function Header() {
             target="_blank"
             rel="noopener noreferrer"
             className="mt-0 ml-5 md:ml-0"
+            aria-label="Follow on Instagram"
           >
             <Instagram />
           </a>

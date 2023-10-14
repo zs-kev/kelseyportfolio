@@ -33,6 +33,7 @@ function Posts({ posts }: Props) {
           width={width}
           height={height}
           className="max-w-full"
+          priority={true}
         />
       </div>
     );
