@@ -1,39 +1,14 @@
+## Kelsey Illustrates
+I designed and developed a professional portfolio website tailored to showcase the incredible work of my freelance illustrator sister, who also works in the TV industry. This dynamic website, powered by Next.js and Sanity.io for the headless CMS, seamlessly integrates her latest projects, making it easy for potential clients and collaborators to explore her talents.
+
+To enhance user engagement, I incorporated a contact form that efficiently forwards inquiries to her Gmail account via SendGrid, ensuring a smooth communication process. The website’s design was meticulously crafted in Figma, and I employed Tailwind CSS for its stylish visual presentation.
+
+Notably, the website includes an image popup feature, which allows visitors to click on images to enlarge them, providing a more immersive view of her artwork. This enhancement significantly elevates the user experience, enabling a closer examination of her stunning illustrations.
+
+Additionally, I’m working on implementing captivating website animations using Framer Motion, which will add a touch of interactivity and flair to the overall design.
+
 ## Things still todo:
 
-- Implement clickable images on portfolio page.
+- Implement clickable images on portfolio page. - Completed 16/10/2023
+- Add Animiations where suitable.
 - Clean up contact page code.
-
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
